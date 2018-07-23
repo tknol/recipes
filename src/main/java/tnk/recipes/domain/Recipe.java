@@ -1,6 +1,7 @@
 package tnk.recipes.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -30,6 +31,11 @@ public class Recipe {
         joinColumns = @JoinColumn(name = "recipe_id"),
         inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories;
+
+    public Recipe() {
+        this.ingredients = new HashSet<>();
+        this.categories = new HashSet<>();
+    }
 
     public String getDescription() {
         return description;
@@ -101,6 +107,7 @@ public class Recipe {
 
     public void setNote(Note note) {
         this.note = note;
+        note.setRecipe(this);
     }
 
     public Long getId() {
