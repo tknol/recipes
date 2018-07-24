@@ -1,9 +1,9 @@
-package guru.springframework.converters;
+package tnk.recipes.converters;
 
-import guru.springframework.commands.IngredientCommand;
-import guru.springframework.domain.Ingredient;
-import guru.springframework.domain.Recipe;
-import guru.springframework.domain.UnitOfMeasure;
+import tnk.recipes.commands.IngredientCommand;
+import tnk.recipes.domain.Ingredient;
+import tnk.recipes.domain.Recipe;
+import tnk.recipes.domain.UnitOfMeasure;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -48,7 +48,7 @@ public class IngredientToIngredientCommandTest {
         ingredient.setRecipe(RECIPE);
         ingredient.setAmount(AMOUNT);
         ingredient.setDescription(DESCRIPTION);
-        ingredient.setUom(null);
+        ingredient.setUnitOfMeasure(null);
         //when
         IngredientCommand ingredientCommand = converter.convert(ingredient);
         //then
@@ -71,7 +71,7 @@ public class IngredientToIngredientCommandTest {
         UnitOfMeasure uom = new UnitOfMeasure();
         uom.setId(UOM_ID);
 
-        ingredient.setUom(uom);
+        ingredient.setUnitOfMeasure(uom);
         //when
         IngredientCommand ingredientCommand = converter.convert(ingredient);
         //then

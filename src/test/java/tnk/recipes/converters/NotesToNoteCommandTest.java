@@ -1,7 +1,7 @@
-package guru.springframework.converters;
+package tnk.recipes.converters;
 
-import guru.springframework.commands.NotesCommand;
-import guru.springframework.domain.Notes;
+import tnk.recipes.commands.NoteCommand;
+import tnk.recipes.domain.Note;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,30 +10,30 @@ import static org.junit.Assert.*;
 /**
  * Created by jt on 6/21/17.
  */
-public class NotesToNotesCommandTest {
+public class NotesToNoteCommandTest {
 
     public static final Long ID_VALUE = new Long(1L);
     public static final String RECIPE_NOTES = "Notes";
-    NotesToNotesCommand converter;
+    NoteToNoteCommand converter;
 
     @Before
     public void setUp() throws Exception {
-        converter = new NotesToNotesCommand();
+        converter = new NoteToNoteCommand();
     }
 
     @Test
     public void convert() throws Exception {
         //given
-        Notes notes = new Notes();
+        Note notes = new Note();
         notes.setId(ID_VALUE);
-        notes.setRecipeNotes(RECIPE_NOTES);
+        notes.setRecipeNote(RECIPE_NOTES);
 
         //when
-        NotesCommand notesCommand = converter.convert(notes);
+        NoteCommand noteCommand = converter.convert(notes);
 
         //then
-        assertEquals(ID_VALUE, notesCommand.getId());
-        assertEquals(RECIPE_NOTES, notesCommand.getRecipeNotes());
+        assertEquals(ID_VALUE, noteCommand.getId());
+        assertEquals(RECIPE_NOTES, noteCommand.getRecipeNote());
     }
 
     @Test
@@ -43,6 +43,6 @@ public class NotesToNotesCommandTest {
 
     @Test
     public void testEmptyObject() throws Exception {
-        assertNotNull(converter.convert(new Notes()));
+        assertNotNull(converter.convert(new Note()));
     }
 }

@@ -1,7 +1,7 @@
-package guru.springframework.converters;
+package tnk.recipes.converters;
 
-import guru.springframework.commands.CategoryCommand;
-import guru.springframework.domain.Category;
+import tnk.recipes.commands.CategoryCommand;
+import tnk.recipes.domain.Category;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;

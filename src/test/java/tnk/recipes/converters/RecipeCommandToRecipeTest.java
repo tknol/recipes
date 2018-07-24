@@ -1,11 +1,11 @@
-package guru.springframework.converters;
+package tnk.recipes.converters;
 
-import guru.springframework.commands.CategoryCommand;
-import guru.springframework.commands.IngredientCommand;
-import guru.springframework.commands.NotesCommand;
-import guru.springframework.commands.RecipeCommand;
-import guru.springframework.domain.Difficulty;
-import guru.springframework.domain.Recipe;
+import tnk.recipes.commands.CategoryCommand;
+import tnk.recipes.commands.IngredientCommand;
+import tnk.recipes.commands.NoteCommand;
+import tnk.recipes.commands.RecipeCommand;
+import tnk.recipes.domain.Difficulty;
+import tnk.recipes.domain.Recipe;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,7 +34,7 @@ public class RecipeCommandToRecipeTest {
     public void setUp() throws Exception {
         converter = new RecipeCommandToRecipe(new CategoryCommandToCategory(),
                 new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure()),
-                new NotesCommandToNotes());
+                new NoteCommandToNote());
     }
 
     @Test
@@ -61,10 +61,10 @@ public class RecipeCommandToRecipeTest {
         recipeCommand.setSource(SOURCE);
         recipeCommand.setUrl(URL);
 
-        NotesCommand notes = new NotesCommand();
+        NoteCommand notes = new NoteCommand();
         notes.setId(NOTES_ID);
 
-        recipeCommand.setNotes(notes);
+        recipeCommand.setNote(notes);
 
         CategoryCommand category = new CategoryCommand();
         category.setId(CAT_ID_1);
@@ -97,7 +97,7 @@ public class RecipeCommandToRecipeTest {
         assertEquals(SERVINGS, recipe.getServings());
         assertEquals(SOURCE, recipe.getSource());
         assertEquals(URL, recipe.getUrl());
-        assertEquals(NOTES_ID, recipe.getNotes().getId());
+        assertEquals(NOTES_ID, recipe.getNote().getId());
         assertEquals(2, recipe.getCategories().size());
         assertEquals(2, recipe.getIngredients().size());
     }

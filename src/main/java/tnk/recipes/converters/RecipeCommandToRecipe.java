@@ -1,24 +1,22 @@
-package guru.springframework.converters;
+package tnk.recipes.converters;
 
-import guru.springframework.commands.RecipeCommand;
-import guru.springframework.domain.Recipe;
+import tnk.recipes.commands.RecipeCommand;
+import tnk.recipes.domain.Recipe;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by jt on 6/21/17.
- */
+
 @Component
 public class RecipeCommandToRecipe implements Converter<RecipeCommand, Recipe> {
 
     private final CategoryCommandToCategory categoryConveter;
     private final IngredientCommandToIngredient ingredientConverter;
-    private final NotesCommandToNotes notesConverter;
+    private final NoteCommandToNote notesConverter;
 
     public RecipeCommandToRecipe(CategoryCommandToCategory categoryConveter, IngredientCommandToIngredient ingredientConverter,
-                                 NotesCommandToNotes notesConverter) {
+                                 NoteCommandToNote notesConverter) {
         this.categoryConveter = categoryConveter;
         this.ingredientConverter = ingredientConverter;
         this.notesConverter = notesConverter;
@@ -42,7 +40,7 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand, Recipe> {
         recipe.setServings(source.getServings());
         recipe.setSource(source.getSource());
         recipe.setUrl(source.getUrl());
-        recipe.setNotes(notesConverter.convert(source.getNotes()));
+        recipe.setNote(notesConverter.convert(source.getNote()));
 
         if (source.getCategories() != null && source.getCategories().size() > 0){
             source.getCategories()

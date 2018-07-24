@@ -1,7 +1,7 @@
-package guru.springframework.converters;
+package tnk.recipes.converters;
 
-import guru.springframework.commands.UnitOfMeasureCommand;
-import guru.springframework.domain.UnitOfMeasure;
+import tnk.recipes.commands.UnitOfMeasureCommand;
+import tnk.recipes.domain.UnitOfMeasure;
 import org.junit.Before;
 import org.junit.Test;
 

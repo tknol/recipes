@@ -1,7 +1,7 @@
-package guru.springframework.converters;
+package tnk.recipes.converters;
 
-import guru.springframework.commands.RecipeCommand;
-import guru.springframework.domain.*;
+import tnk.recipes.commands.RecipeCommand;
+import tnk.recipes.domain.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,7 +30,7 @@ public class RecipeToRecipeCommandTest {
         converter = new RecipeToRecipeCommand(
                 new CategoryToCategoryCommand(),
                 new IngredientToIngredientCommand(new UnitOfMeasureToUnitOfMeasureCommand()),
-                new NotesToNotesCommand());
+                new NoteToNoteCommand());
     }
 
     @Test
@@ -57,10 +57,10 @@ public class RecipeToRecipeCommandTest {
         recipe.setSource(SOURCE);
         recipe.setUrl(URL);
 
-        Notes notes = new Notes();
+        Note notes = new Note();
         notes.setId(NOTES_ID);
 
-        recipe.setNotes(notes);
+        recipe.setNote(notes);
 
         Category category = new Category();
         category.setId(CAT_ID_1);
@@ -94,7 +94,7 @@ public class RecipeToRecipeCommandTest {
         assertEquals(SERVINGS, command.getServings());
         assertEquals(SOURCE, command.getSource());
         assertEquals(URL, command.getUrl());
-        assertEquals(NOTES_ID, command.getNotes().getId());
+        assertEquals(NOTES_ID, command.getNote().getId());
         assertEquals(2, command.getCategories().size());
         assertEquals(2, command.getIngredients().size());
 

@@ -1,21 +1,21 @@
-package guru.springframework.converters;
+package tnk.recipes.converters;
 
-import guru.springframework.commands.NotesCommand;
-import guru.springframework.domain.Notes;
+import tnk.recipes.commands.NoteCommand;
+import tnk.recipes.domain.Note;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class NotesCommandToNotesTest {
+public class NotesCommandToNoteTest {
 
     public static final Long ID_VALUE = new Long(1L);
     public static final String RECIPE_NOTES = "Notes";
-    NotesCommandToNotes converter;
+    NoteCommandToNote converter;
 
     @Before
     public void setUp() throws Exception {
-        converter = new NotesCommandToNotes();
+        converter = new NoteCommandToNote();
 
     }
 
@@ -26,23 +26,23 @@ public class NotesCommandToNotesTest {
 
     @Test
     public void testEmptyObject() throws Exception {
-        assertNotNull(converter.convert(new NotesCommand()));
+        assertNotNull(converter.convert(new NoteCommand()));
     }
 
     @Test
     public void convert() throws Exception {
         //given
-        NotesCommand notesCommand = new NotesCommand();
-        notesCommand.setId(ID_VALUE);
-        notesCommand.setRecipeNotes(RECIPE_NOTES);
+        NoteCommand noteCommand = new NoteCommand();
+        noteCommand.setId(ID_VALUE);
+        noteCommand.setRecipeNote(RECIPE_NOTES);
 
         //when
-        Notes notes = converter.convert(notesCommand);
+        Note notes = converter.convert(noteCommand);
 
         //then
         assertNotNull(notes);
         assertEquals(ID_VALUE, notes.getId());
-        assertEquals(RECIPE_NOTES, notes.getRecipeNotes());
+        assertEquals(RECIPE_NOTES, notes.getRecipeNote());
     }
 
 }

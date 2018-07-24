@@ -1,9 +1,9 @@
-package guru.springframework.converters;
+package tnk.recipes.converters;
 
-import guru.springframework.commands.IngredientCommand;
-import guru.springframework.commands.UnitOfMeasureCommand;
-import guru.springframework.domain.Ingredient;
-import guru.springframework.domain.Recipe;
+import tnk.recipes.commands.IngredientCommand;
+import tnk.recipes.commands.UnitOfMeasureCommand;
+import tnk.recipes.domain.Ingredient;
+import tnk.recipes.domain.Recipe;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -52,11 +52,11 @@ public class IngredientCommandToIngredientTest {
 
         //then
         assertNotNull(ingredient);
-        assertNotNull(ingredient.getUom());
+        assertNotNull(ingredient.getUnitOfMeasure());
         assertEquals(ID_VALUE, ingredient.getId());
         assertEquals(AMOUNT, ingredient.getAmount());
         assertEquals(DESCRIPTION, ingredient.getDescription());
-        assertEquals(UOM_ID, ingredient.getUom().getId());
+        assertEquals(UOM_ID, ingredient.getUnitOfMeasure().getId());
     }
 
     @Test
@@ -74,7 +74,7 @@ public class IngredientCommandToIngredientTest {
 
         //then
         assertNotNull(ingredient);
-        assertNull(ingredient.getUom());
+        assertNull(ingredient.getUnitOfMeasure());
         assertEquals(ID_VALUE, ingredient.getId());
         assertEquals(AMOUNT, ingredient.getAmount());
         assertEquals(DESCRIPTION, ingredient.getDescription());
