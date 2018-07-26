@@ -28,6 +28,7 @@ public class IngredientToIngredientCommandTest {
     @Before
     public void setUp() throws Exception {
         converter = new IngredientToIngredientCommand(new UnitOfMeasureToUnitOfMeasureCommand());
+        RECIPE.setId(ID_VALUE);
     }
 
     @Test
@@ -81,5 +82,6 @@ public class IngredientToIngredientCommandTest {
         // assertEquals(RECIPE, ingredientCommand.get);
         assertEquals(AMOUNT, ingredientCommand.getAmount());
         assertEquals(DESCRIPTION, ingredientCommand.getDescription());
+        assertEquals(ID_VALUE, ingredientCommand.getRecipeId());
     }
 }
