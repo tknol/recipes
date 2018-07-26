@@ -8,6 +8,7 @@ import tnk.recipes.commands.RecipeCommand;
 import tnk.recipes.converters.RecipeCommandToRecipe;
 import tnk.recipes.converters.RecipeToRecipeCommand;
 import tnk.recipes.domain.Recipe;
+import tnk.recipes.exception.NotFoundException;
 import tnk.recipes.repositories.RecipeRepository;
 
 import java.util.HashSet;
@@ -43,7 +44,7 @@ public class RecipeServiceImpl implements RecipeService {
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 
         if (!recipeOptional.isPresent()) {
-            throw new RuntimeException("Recipe Not Found!");
+            throw new NotFoundException("Recipe Not Found!");
         }
 
         return recipeOptional.get();
